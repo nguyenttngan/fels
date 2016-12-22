@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'all' => 'All',
     'title' => 'FELS',
     'home' => 'Home',
     'login' => 'Login',
@@ -21,5 +22,7 @@ return [
     'lessons' => 'Lesson|Lessons',
     'activities' => 'Activity|Activities',
     'learned' => 'Learned',
+    'unlearned' => 'Unlearned',
     'followed' => 'Followed',
+    'filter' => 'Filter'
 ];
