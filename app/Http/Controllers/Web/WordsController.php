@@ -40,7 +40,7 @@ class WordsController extends Controller
         } elseif ($filter == config("custom.filter.unlearned")) {
             $query->unlearned($userId);
         }
-        $words = $query->get();
+        $words = $query->get(['words.*']);
 
         return view('web.words.index', compact('filter', 'categoryId', 'words', 'categorySelect'));
     }

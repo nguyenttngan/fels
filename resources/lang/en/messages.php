@@ -28,4 +28,5 @@ return [
     'youve' => 'You\'ve',
     'start' => 'Start',
     'next' => 'Next',
+    'finish' => 'Finish',
 ];
