@@ -12,6 +12,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->delete();
         factory(User::class, 5)->create();
+        User::where('id', 1)->update([
+            'name' => 'Tom Jerry',
+            'password' => bcrypt('123456'),
+            'email' => 'laravel-a8419c@inbox.mailtrap.io',
+        ]);
     }
 }

@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/home', 'HomeController@index');
-    Route::get('/word/index', 'Web\WordsController@index');
+    Route::get('/home', 'Web\HomeController@index');
+    Route::get('/word', 'Web\WordsController@index');
+    Route::get('/categories', 'Web\CategoriesController@index');
+    Route::get('/lessons/create/{categoryId}/{lessonId?}', 'Web\LessonsController@create');
 });

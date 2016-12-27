@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Word;
+use App\Models\Category;
 
 class WordsTableSeeder extends Seeder
 {
@@ -12,9 +13,9 @@ class WordsTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = \App\Models\Category::all();
+        $categories = Category::all();
         foreach ($categories as $category) {
-            factory(Word::class, 6)->create([
+            factory(Word::class, 15)->create([
                 'category_id' => $category->id,
                 'meaning_id' => 1,
             ]);

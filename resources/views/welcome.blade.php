@@ -71,7 +71,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ action('HomeController@index') }}">
+                        <a href="{{ action('Web\HomeController@index') }}">
                             @lang('messages.home')
                         </a>
                     @else

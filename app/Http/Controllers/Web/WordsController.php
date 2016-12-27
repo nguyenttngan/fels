@@ -42,7 +42,7 @@ class WordsController extends Controller
         }
         $words = $query->get();
 
-        return view('words.index', compact('filter', 'categoryId', 'words', 'categorySelect'));
+        return view('web.words.index', compact('filter', 'categoryId', 'words', 'categorySelect'));
     }
 }
 

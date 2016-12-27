@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Word;
+use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -39,5 +42,9 @@ class User extends Authenticatable
         return $this->hasMany(Lesson::class);
     }
 
+    public function countLearnedWords($categoryId)
+    {
+        return Word::where('words.category_id', $categoryId)->learned(Auth::id())->count();
+    }
 }
 

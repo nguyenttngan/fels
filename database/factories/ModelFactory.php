@@ -48,3 +48,18 @@ $factory->define(App\Models\Lesson::class, function (Faker\Generator $faker) {
         'category_id' => $faker->numberBetween(1, 5),
     ];
 });
+
+$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->text(20),
+    ];
+});
+
+$factory->define(App\Models\Word::class, function (Faker\Generator $faker) {
+    return [
+        'word' => $faker->text(10),
+        'category_id' => $faker->numberBetween(1, 2),
+        'meaning_id' => $faker->unique()->numberBetween(1, 40),
+    ];
+});
+

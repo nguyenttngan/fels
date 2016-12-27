@@ -24,5 +24,8 @@ return [
     'learned' => 'Learned',
     'unlearned' => 'Unlearned',
     'followed' => 'Followed',
-    'filter' => 'Filter'
+    'filter' => 'Filter',
+    'youve' => 'You\'ve',
+    'start' => 'Start',
+    'next' => 'Next',
 ];

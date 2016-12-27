@@ -26,7 +26,9 @@
                         <a href="{{ action('Web\WordsController@index') }}">{{ trans_choice('messages.words', 2) }}</a>
                     </li>
                     <li>
-                        <a href="#">{{ trans_choice('messages.categories', 2) }}</a>
+                        <a href="{{ action('Web\CategoriesController@index') }}">
+                            {{ trans_choice('messages.categories', 2) }}
+                        </a>
                     </li>
                     <li>
                         <a href="#">{{ trans_choice('messages.lessons', 2) }}</a>
