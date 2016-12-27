@@ -15,4 +15,11 @@ return [
     'reset_password' => 'Reset Password',
     'send_reset_link' => 'Send Password Reset Link',
     'dashboard' => 'Dashboard',
+    'profile' => 'Profile',
+    'words' => 'Word|Words',
+    'categories' => 'Category|Categories',
+    'lessons' => 'Lesson|Lessons',
+    'activities' => 'Activity|Activities',
+    'learned' => 'Learned',
+    'followed' => 'Followed',
 ];
