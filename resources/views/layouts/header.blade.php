@@ -21,6 +21,17 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 &nbsp;
+                @if (!Auth::guest())
+                    <li>
+                        <a href="#">{{ trans_choice('messages.words', 2) }}</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ trans_choice('messages.categories', 2) }}</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ trans_choice('messages.lessons', 2) }}</a>
+                    </li>
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -47,17 +58,20 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="#">@lang('messages.profile')</a>
+                            </li>
+                            <li>
                                 <a href="{{ action('Auth\LoginController@logout') }}"
                                     onclick="event.preventDefault();
-                                             document.getElementById(
-                                             'logout-form').submit();">
+                                             document.getElementById('logout-form').submit();">
                                     @lang('messages.logout')
                                 </a>
 
-                                {!! Form::open(['method' => 'POST',
+                                {!! Form::open([
+                                    'method' => 'POST',
                                     'action' => 'Auth\LoginController@logout',
                                     'id' => 'logout-form',
-                                    'style' =>'display: none;',
+                                    'style' => 'display: none;',
                                 ]) !!}
                                 {!! Form::close() !!}
                             </li>

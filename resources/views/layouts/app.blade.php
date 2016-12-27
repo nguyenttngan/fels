@@ -13,7 +13,6 @@
     <!-- Styles -->
     {!! Html::style(elixir('css/app.css')) !!}
 
-    <!-- Scripts -->
 </head>
 <body>
     <div id="app">
@@ -22,6 +21,6 @@
     </div>
 
     <!-- Scripts -->
-    {!! Html::style(elixir('js/app.js')) !!}
+    {!! Html::script(elixir('js/app.js')) !!}
 </body>
 </html>
