@@ -20,4 +20,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/word', 'Web\WordsController@index');
     Route::get('/categories', 'Web\CategoriesController@index');
     Route::get('/lessons/create/{categoryId}/{lessonId?}', 'Web\LessonsController@create');
+    Route::get('/user/show/{user?}', 'Web\UsersController@show');
+    Route::resource('user', 'Web\UsersController', ['only' => [
+        'edit', 'update'
+    ]]);
 });

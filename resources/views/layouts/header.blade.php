@@ -52,15 +52,15 @@
                     </li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                            aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <img src="{{ Auth::user()->avatarUrl }}" alt="avatar" class="avatar-navigation">
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#">@lang('messages.profile')</a>
+                                <a href="{{ action('Web\UsersController@show') }}">@lang('messages.profile')</a>
                             </li>
                             <li>
                                 <a href="{{ action('Auth\LoginController@logout') }}"

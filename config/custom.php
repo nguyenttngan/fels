@@ -11,4 +11,7 @@ return [
         'unlearned' => 'unlearned',
     ],
     'paginate' => 4,
+    'url' => [
+        'avatar' => '/uploads/avatars/',
+    ]
 ];
