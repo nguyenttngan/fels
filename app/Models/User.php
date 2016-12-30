@@ -46,5 +46,12 @@ class User extends Authenticatable
     {
         return Word::where('words.category_id', $categoryId)->learned(Auth::id())->count();
     }
-}
 
+    /**
+     * @return string
+     */
+    public function getAvatarUrlAttribute()
+    {
+        return config('custom.url.avatar') . $this->avatar;
+    }
+}
