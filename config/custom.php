@@ -9,5 +9,6 @@ return [
     'filter' => [
         'learned' => 'learned',
         'unlearned' => 'unlearned',
-    ]
+    ],
+    'paginate' => 4,
 ];

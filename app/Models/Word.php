@@ -62,7 +62,5 @@ class Word extends Model
                 $query->whereNull('lessons.user_id')
                     ->orWhere('lessons.user_id', '!=', $userId);
             });
-
     }
-
 }
