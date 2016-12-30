@@ -13,6 +13,9 @@ return [
     'paginate' => 4,
     'wordsPerLesson' => 20,
     'url' => [
-        'avatar' => '/uploads/avatars/',
+        'avatar' => 'uploads/avatars/',
+    ],
+    'image' => [
+        'default' => 'default.jpg',
     ]
 ];
