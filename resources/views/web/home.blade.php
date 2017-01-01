@@ -10,10 +10,10 @@
                         <a href="{{ action('Web\UsersController@show') }}">{{ Auth::user()->name }}</a>
                     </li>
                     <li>
-                        @lang('messages.learned') 100 {{ trans_choice('messages.words', 2) }}
+                        @lang('messages.learned') {{ $numOfLearnedWord }} {{ trans_choice('messages.words', 2) }}
                     </li>
                     <li>
-                        @lang('messages.followed') :
+                        @lang('messages.followed') : <a href="{{ action('Web\FollowsController@show') }}">{{ $numOfFollowed }}</a>
                     </li>
                 </ul>
             </div>

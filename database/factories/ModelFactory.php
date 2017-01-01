@@ -62,4 +62,3 @@ $factory->define(App\Models\Word::class, function (Faker\Generator $faker) {
         'meaning_id' => $faker->unique()->numberBetween(1, 40),
     ];
 });
-
