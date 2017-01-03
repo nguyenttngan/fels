@@ -25,7 +25,7 @@ return [
     'unlearned' => 'Unlearned',
     'followed' => 'Followed',
     'filter' => 'Filter',
-    'youve' => "You've",
+    'youve' => 'You\'ve',
     'start' => 'Start',
     'next' => 'Next',
     'finish' => 'Finish',
@@ -39,4 +39,7 @@ return [
     'noact' => "You haven't learned any lesson yet !",
     'empty' => "There's no any :item exists",
     'exist' => ':Item not exists',
+    'follow' => 'Follow',
+    'unfollow' => 'Unfollow',
+    'following' => 'Following',
 ];
