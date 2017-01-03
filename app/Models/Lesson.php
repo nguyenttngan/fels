@@ -21,7 +21,7 @@ class Lesson extends Model
      */
     public function words()
     {
-        return $this->belongsToMany(Word::class);
+        return $this->belongsToMany(Word::class)->withPivot('meaning_id')->withTimestamps();;
     }
 
     /**

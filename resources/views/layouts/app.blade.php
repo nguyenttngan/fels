@@ -22,5 +22,6 @@
 
     <!-- Scripts -->
     {!! Html::script(elixir('js/app.js')) !!}
+    @yield('js')
 </body>
 </html>

@@ -63,4 +63,11 @@ class Word extends Model
                     ->orWhere('lessons.user_id', '!=', $userId);
             });
     }
+
+    public function scopeRelearned($query, $lessonId)
+    {
+        return $query->join('lesson_word', 'words.id', '=', 'lesson_word.word_id')
+            ->join('lessons', 'lessons.id', '=', 'lesson_word.lesson_id')
+            ->where('lessons.id', '!=', $lessonId);
+    }
 }

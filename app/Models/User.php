@@ -49,7 +49,11 @@ class User extends Authenticatable
 
     public function countLearnedWords($categoryId)
     {
-        return Word::where('words.category_id', $categoryId)->learned(Auth::id())->count();
+        $learnedWordsNum = Word::where('words.category_id', $categoryId)->learned(Auth::id())->count();
+        $totalWordsNum = Word::where('words.category_id', $categoryId)->count();
+        return ($learnedWordsNum > $totalWordsNum)
+            ? $totalWordsNum
+            : $learnedWordsNum;
     }
 
     /**

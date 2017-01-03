@@ -6,31 +6,43 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        {{ $category->name }}
+                        {{ $category->name }}: {{ $count }}/{{ config('custom.wordsPerLesson') }}
                     </div>
-                    <div class="panel-body">
-                        <div class="col-md-3 col-md-offset-2">
-                            <h4>
-                                <strong>{{ $word->word }}</strong>
-                            </h4>
+                    {!! Form::open(['method' => 'POST', 'action' => 'Web\LessonsController@update']) !!}
+                        <div class="panel-body">
+                            <div class="col-md-3 col-md-offset-2">
+                                <h4>
+                                    <strong>{{ $word->word }}</strong>
+                                </h4>
+                                <p id="correctMng" class="hidden">{{ $correctMng->content }}</p>
+                                {!! Form::hidden('cateId', $category->id) !!}
+                                {!! Form::hidden('wordId', $word->id) !!}
+                                {!! Form::hidden('lessonId', $lessonId, null) !!}
+                                {!! Form::hidden('count', $count, null) !!}
+                            </div>
+                                <div class="col-md-5 col-md-offset-2">
+                                    @foreach ($word->meanings as $meaning)
+                                        {!! Form::radio('meanings', $meaning->id, null, [
+                                            'required'
+                                        ]) !!} {{ $meaning->content }}<br>
+                                    @endforeach
+                                    {!! Form::hidden('selectedMng') !!}
+                                </div>
                         </div>
-                        <div class="col-md-5">
-                            <ul>
-                                <li>Answer 1</li>
-                                <li>Answer 2</li>
-                                <li>Answer 3</li>
-                                <li>Answer 4</li>
-                            </ul>
+                        <div class="panel-footer">
+                            @if ($count < config('custom.wordsPerLesson'))
+                                {!! Form::submit(trans('messages.next'), ['class' => 'btn btn-info']) !!}
+                            @else
+                                {!! Form::submit(trans('messages.finish'), ['class' => 'btn btn-info']) !!}
+                            @endif
                         </div>
-                    </div>
-                    <div class="panel-footer">
-                        <a class="btn btn-info" href="{{ action('Web\LessonsController@create', [
-                            'categoryId' => $category->id,
-                            'lessonId' => $lesson->id,
-                        ]) }}">@lang('messages.next')</a>
-                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+{!! Html::script(elixir('js/lesson.js')) !!}
 @endsection
