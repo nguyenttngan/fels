@@ -12,7 +12,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ action('Web\HomeController@index') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
         </div>
@@ -31,7 +31,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">{{ trans_choice('messages.lessons', 2) }}</a>
+                        <a href="{{ action('Web\LessonsController@index') }}">
+                            {{ trans_choice('messages.lessons', 2) }}
+                        </a>
                     </li>
                 @endif
             </ul>

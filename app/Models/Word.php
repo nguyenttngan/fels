@@ -41,6 +41,10 @@ class Word extends Model
         return $this->hasMany(Meaning::class);
     }
 
+    public function correctMeaning()
+    {
+        return $this->belongsTo(Meaning::class, 'meaning_id');
+    }
     /**
      * @param $query
      */

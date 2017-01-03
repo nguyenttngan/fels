@@ -25,6 +25,14 @@ class Lesson extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function meanings()
+    {
+        return $this->belongsToMany(Meaning::class, 'lesson_word')->withPivot('word_id')->withTimestamps();;
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()

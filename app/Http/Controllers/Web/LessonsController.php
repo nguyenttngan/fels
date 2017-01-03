@@ -13,6 +13,37 @@ use Illuminate\Support\Facades\Auth;
 
 class LessonsController extends Controller
 {
+    public function index()
+    {
+        $lessons = Lesson::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->paginate(config('custom.paginate.lesson'));
+        abort_if(!$lessons, 404, trans('messages.noact'));
+
+        return view('web.lessons.index')->with([
+            'lessons' => $lessons,
+        ]);
+    }
+
+    public function show($lessonId)
+    {
+        $lesson = Lesson::find($lessonId);
+        abort_if(!$lesson, 404, trans('messages.exist', [
+            'item' => trans_choice('messages.lessons', 1)
+        ]));
+
+        $answers = $lesson->meanings->pluck('content', 'word_id');
+
+        return view('web.lessons.show')->with([
+            'lesson' => $lesson,
+            'answers' => $answers,
+            'numAns' => $lesson->words->count(),
+            'numCorrectAns' => $lesson->words->filter(function($word) {
+                return $word->meaning_id == $word->pivot->meaning_id;
+            })->count(),
+        ]);
+    }
+
     public function create(Request $request, $categoryId, $lessonId = null, $count = 0)
     {
         $userId = Auth::id();
@@ -32,6 +63,10 @@ class LessonsController extends Controller
             }
             session(['word' => $word]);
         }
+
+        abort_if(!$word, 404, trans('messages.empty', [
+            'item' => trans_choice('messages.words', 1)
+        ]));
 
         return view('web.lessons.create')->with([
             'category' => $category,
@@ -63,12 +98,9 @@ class LessonsController extends Controller
                 $lessonId = $lesson->id;
             }
 
-            if ($hasNextLesson = $count < config('custom.wordsPerLesson')) {
-                Lesson::find($lessonId)->words()->attach($wordId, ['meaning_id' => $selectedMeaning]);
-            }
-
+            Lesson::find($lessonId)->words()->attach($wordId, ['meaning_id' => $selectedMeaning]);
             DB::commit();
-            if ($hasNextLesson) {
+            if ($count < config('custom.wordsPerLesson')) {
                 return redirect()->action('Web\LessonsController@create', [
                     'categoryId' => $categoryId,
                     'lessonId' => $lessonId,
@@ -76,8 +108,7 @@ class LessonsController extends Controller
                 ]);
             }
 
-            // TODO
-            return "Result";
+            return redirect()->action('Web\LessonsController@show', ['lessonId' => $lessonId]);
         } catch(\Exception $e) {
             DB::rollBack();
         }

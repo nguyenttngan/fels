@@ -13,6 +13,7 @@ class MeaningsTableSeeder extends Seeder
      */
     public function run()
     {
+        Meaning::truncate();
         $words = Word::all();
         foreach ($words as $word) {
             factory(Meaning::class, 4)->create([

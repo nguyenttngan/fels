@@ -3,7 +3,7 @@
     <div>
         <div class="form-group">
             {!! Form::open(array('url' => action('Web\WordsController@index'), 'method' => 'get')) !!}
-                {!!  trans('messages.categories') !!}
+                {!! trans_choice('messages.categories', 2) !!}
                 {!! Form::select('category_id', $categorySelect, $categoryId, ['placeholder' => trans('messages.all') ]) !!}
                 {!! Form::radio('filter', '', $filter == '') !!} {{ trans('messages.all') }}
                 {!! Form::radio('filter', 'learned', $filter == config('custom.filter.learned')) !!} {{ trans('messages.learned') }}

@@ -13,9 +13,10 @@ class WordsTableSeeder extends Seeder
      */
     public function run()
     {
+        Word::truncate();
         $categories = Category::all();
         foreach ($categories as $category) {
-            factory(Word::class, 15)->create([
+            factory(Word::class, 50)->create([
                 'category_id' => $category->id,
                 'meaning_id' => 1,
             ]);

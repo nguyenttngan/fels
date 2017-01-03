@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/categories', 'Web\CategoriesController@index');
 
+    Route::get('/lessons', 'Web\LessonsController@index');
+    Route::get('/lessons/show/{lessonId}', 'Web\LessonsController@show');
     Route::get('/lessons/create/{categoryId}/{lessonId?}/{count?}', 'Web\LessonsController@create');
     Route::post('/lessons/update', 'Web\LessonsController@update');
 

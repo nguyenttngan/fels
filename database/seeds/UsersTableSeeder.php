@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->delete();
+        User::truncate();
         factory(User::class, 5)->create();
         User::where('id', 1)->update([
             'name' => 'Tom Jerry',

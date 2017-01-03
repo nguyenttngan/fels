@@ -9,7 +9,7 @@
                 <div class="panel-heading">
                     <strong>{{ $category->name }}</strong>
                     @lang('messages.youve') @lang('messages.learned')
-                    {{ Auth::user()->countLearnedWords($category->id) }}
+                    {{ Auth::user()->countLearnedWords($category->id) }}/{{ $category->words()->count() }}
                     {{ trans_choice('messages.words', 2) }}
                 </div>
                 <div class="panel-body">

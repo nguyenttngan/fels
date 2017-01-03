@@ -10,8 +10,11 @@ return [
         'learned' => 'learned',
         'unlearned' => 'unlearned',
     ],
-    'paginate' => 4,
-    'wordsPerLesson' => 20,
+    'paginate' => [
+        'category' => 4,
+        'lesson' => 10,
+    ],
+    'wordsPerLesson' => 5,
     'url' => [
         'avatar' => 'uploads/avatars/',
     ],
