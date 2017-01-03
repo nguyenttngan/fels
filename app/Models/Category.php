@@ -31,4 +31,9 @@ class Category extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+    public function meanings()
+    {
+        return $this->hasManyThrough(Meaning::class, Word::class);
+    }
 }

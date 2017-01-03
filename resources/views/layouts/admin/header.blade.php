@@ -12,8 +12,8 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ action('Web\HomeController@index') }}">
-                {{ config('app.name', 'Laravel') }}
+            <a class="navbar-brand" href="{{ action('Admin\HomeController@index') }}">
+                {{ config('custom.adminbrand', 'Laravel') }}
             </a>
         </div>
 
@@ -23,17 +23,15 @@
                 &nbsp;
                 @if (!Auth::guest())
                     <li>
-                        <a href="{{ action('Web\WordsController@index') }}">{{ trans_choice('messages.words', 2) }}</a>
+                        <a href="#">{{ trans_choice('messages.words', 2) }}</a>
                     </li>
                     <li>
-                        <a href="{{ action('Web\CategoriesController@index') }}">
+                        <a href="{{ action('Admin\CategoryController@index') }}">
                             {{ trans_choice('messages.categories', 2) }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ action('Web\LessonsController@index') }}">
-                            {{ trans_choice('messages.lessons', 2) }}
-                        </a>
+                        <a href="#">{{ trans_choice('messages.users', 2) }}</a>
                     </li>
                 @endif
             </ul>
