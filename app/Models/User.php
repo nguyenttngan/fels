@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasMany(Lesson::class);
     }
 
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'followed_id');
+    }
+
     public function countLearnedWords($categoryId)
     {
         return Word::where('words.category_id', $categoryId)->learned(Auth::id())->count();
