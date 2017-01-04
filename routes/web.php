@@ -17,12 +17,17 @@ Route::get('/', function () {
 Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/home', 'Web\HomeController@index');
+
     Route::get('/word', 'Web\WordsController@index');
+
     Route::get('/categories', 'Web\CategoriesController@index');
+
     Route::get('/lessons/create/{categoryId}/{lessonId?}/{count?}', 'Web\LessonsController@create');
-    Route::get('/user/show/{user?}/{count?}', 'Web\UsersController@show');
-    Route::resource('user', 'Web\UsersController', ['only' => [
-        'edit', 'update'
-    ]]);
     Route::post('/lessons/update', 'Web\LessonsController@update');
+
+    Route::get('/user/show/{user?}', 'Web\UsersController@show');
+    Route::get('/user/edit', 'Web\UsersController@edit');
+    Route::resource('user', 'Web\UsersController', ['only' => [
+        'update'
+    ]]);
 });

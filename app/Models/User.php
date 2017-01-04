@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Word;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class User extends Authenticatable
 {
@@ -61,6 +63,14 @@ class User extends Authenticatable
      */
     public function getAvatarUrlAttribute()
     {
-        return config('custom.url.avatar') . $this->avatar;
+        return url(config('custom.url.avatar') . $this->avatar);
+    }
+
+    /**
+     * @param $password
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::make($password);
     }
 }

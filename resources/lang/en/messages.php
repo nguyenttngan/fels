@@ -29,4 +29,7 @@ return [
     'start' => 'Start',
     'next' => 'Next',
     'finish' => 'Finish',
+    'edit' => 'Edit',
+    'save' => 'Save',
+    'unchanged' => 'Leave this field if you do not want to change',
 ];
