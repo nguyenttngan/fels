@@ -10,7 +10,7 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('name', 'asc')->paginate(config('custom.paginate'));
+        $categories = Category::orderBy('name', 'asc')->paginate(config('custom.paginate.category'));
         return view('web.categories.index')->with([
             'categories' => $categories,
         ]);

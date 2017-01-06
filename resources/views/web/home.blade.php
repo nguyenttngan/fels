@@ -13,45 +13,26 @@
                         @lang('messages.learned') {{ $numOfLearnedWord }} {{ trans_choice('messages.words', 2) }}
                     </li>
                     <li>
-                        @lang('messages.followed') : <a href="{{ action('Web\FollowsController@show') }}">{{ $numOfFollowed }}</a>
+                        @lang('messages.followed') : <a href="#">{{ $numOfFollowed }}</a>
                     </li>
                 </ul>
             </div>
             <div class="col-md-8">
                 <div class="panel panel-info">
-                    <div class="panel-heading">{{ trans_choice('messages.activities', 2) }}</div>
+                    <div class="panel-heading">{{ trans_choice('messages.activities', count($lessons)) }}</div>
 
                     <div class="panel-body">
-                        <li>
-                            <a href="#">
-                                @lang('messages.learned') 20 {{ trans_choice('messages.words', 2)}}
-                                in {{ trans_choice('messages.lessons', 1) }} "Basic 500" - 22/12/2016
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                @lang('messages.learned') 20 {{ trans_choice('messages.words', 2)}}
-                                in {{ trans_choice('messages.lessons', 1) }} "Basic 500" - 22/12/2016
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                @lang('messages.learned') 20 {{ trans_choice('messages.words', 2)}}
-                                in {{ trans_choice('messages.lessons', 1) }} "Basic 500" - 22/12/2016
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                @lang('messages.learned') 20 {{ trans_choice('messages.words', 2)}}
-                                in {{ trans_choice('messages.lessons', 1) }} "Basic 500" - 22/12/2016
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                @lang('messages.learned') 20 {{ trans_choice('messages.words', 2)}}
-                                in {{ trans_choice('messages.lessons', 1) }} "Basic 500" - 22/12/2016
-                            </a>
-                        </li>
+                        @foreach ($lessons as $lesson)
+                        <ul>
+                            <li>
+                                <a href="{{ action('Web\LessonsController@show', ['lessonId' => $lesson->id]) }}">
+                                @lang('messages.learned') {{ $lesson->words()->count() }}
+                                @lang('messages.learned') @lang('messages.in') {{ trans_choice('messages.lessons', 1) }}
+                                <strong>{{ $lesson->category->name }}</strong> - {{ $lesson->created_at }} </a>
+                            </li>
+                        </ul>
+                        @endforeach
+                        {{ $lessons->links() }}
                     </div>
                 </div>
             </div>
