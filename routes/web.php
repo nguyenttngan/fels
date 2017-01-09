@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function() {
     Route::get('/home', 'Web\HomeController@index');
 
     Route::get('/word', 'Web\WordsController@index');
@@ -34,4 +34,5 @@ Route::group(['middleware' => 'auth'], function () {
     ]]);
 
     Route::post('/follow/{user}', 'Web\FollowsController@follow')->name('follow');
+    Route::get('/follows/{user}', 'Web\FollowsController@show');
 });

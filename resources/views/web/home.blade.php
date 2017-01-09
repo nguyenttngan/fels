@@ -13,7 +13,7 @@
                         @lang('messages.learned') {{ $numOfLearnedWord }} {{ trans_choice('messages.words', 2) }}
                     </li>
                     <li>
-                        @lang('messages.followed') : <a href="#">{{ $numOfFollowed }}</a>
+                        @lang('messages.followed') : <a href="{{ action('Web\FollowsController@show', ['user' => Auth::id()]) }}">{{ $numOfFollowed }}</a>
                     </li>
                 </ul>
             </div>
