@@ -18,5 +18,17 @@ class FollowsController extends Controller
         Auth::user()->follows()->toggle($user->id);
 
         return response()->json(['status' => 'success']);
+
+    }
+
+    /**
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(User $user)
+    {
+        $users = $user->follows;
+
+        return view('web.follows.show', compact('users'));
     }
 }
