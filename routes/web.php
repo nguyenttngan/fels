@@ -29,11 +29,13 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('/lessons/update', 'Web\LessonsController@update');
 
         Route::post('/follow/{user}', 'Web\FollowsController@follow')->name('follow');
+        Route::get('/follows/{user}', 'Web\FollowsController@show');
     });
 
-    Route::group(['middleware' => 'admin'], function() {
-        Route::get('admin/home', 'Admin\HomeController@index');
-        Route::resource('admin/categories', 'Admin\CategoryController');
+    Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+        Route::get('/home', 'Admin\HomeController@index');
+        Route::resource('/categories', 'Admin\CategoryController');
+        Route::resource('/users', 'Admin\UsersController');
     });
 
     Route::get('/user/show/{user?}', 'Web\UsersController@show');

@@ -22,6 +22,7 @@
 
     <!-- Scripts -->
     {!! Html::script(elixir('js/app.js')) !!}
+    {!! Html::script(elixir('js/laroute.js')) !!}
     @yield('js')
 </body>
 </html>

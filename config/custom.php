@@ -16,6 +16,7 @@ return [
         'admin' => [
             'word' => 10,
             'category' => 10,
+            'user' => 10,
         ],
     ],
     'wordsPerLesson' => 5,
