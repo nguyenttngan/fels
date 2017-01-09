@@ -24,9 +24,11 @@ class UsersController extends Controller
     {
         if (!$user->exists) {
             $user = Auth::user();
+        } else {
+            $following = Auth::user()->isFollowing($user);
         }
 
-        return view('web.users.show', compact('user'));
+        return view('web.users.show', compact('user', 'following'));
     }
 
     /**

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Word;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -46,7 +47,7 @@ class User extends Authenticatable
 
     public function follows()
     {
-        return $this->belongsToMany(User::class, 'follows', 'user_id', 'followed_id');
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'followed_id')->withTimestamps();
     }
 
     public function countLearnedWords($categoryId)
@@ -73,4 +74,17 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($password);
     }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function isFollowing($user)
+    {
+        $follows = $this->follows;
+
+        return $follows->contains($user);
+    }
+
+
 }

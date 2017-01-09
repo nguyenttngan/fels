@@ -14,7 +14,11 @@ require('laravel-elixir-vue-2');
  */
 
 elixir((mix) => {
-    mix.sass('app.scss')
+    mix.sass([
+        'app.scss',
+        './bower_components/bootstrap-toggle/css/bootstrap-toggle.min.css'
+        ])
        .webpack('app.js')
-       .scripts('lesson.js');
+       .scripts('lesson.js')
+       .scripts('follow.js');
 });

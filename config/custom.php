@@ -20,5 +20,5 @@ return [
     ],
     'image' => [
         'default' => 'default.jpg',
-    ]
+    ],
 ];
