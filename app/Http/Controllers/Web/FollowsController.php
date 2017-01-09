@@ -29,6 +29,6 @@ class FollowsController extends Controller
     {
         $users = $user->follows;
 
-        return view('web.follows.show', compact('users'));
+        return view('web.follows.show', compact('users', 'user'));
     }
 }

@@ -12,7 +12,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading clearfix">
                     <div class="panel-title pull-left">
-                        {{ trans_choice('messages.categories', $count) }} : {{ $count }}
+                        {{ trans_choice('messages.categories', $categories->total()) }} : {{ $categories->total() }}
                     </div>
                     <div class="pull-right">
                         <a class="btn btn-primary"
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                @if ($count != 0)
+                @if ($categories->total() != 0)
                     <table class="table table-hover table-bordered text-center">
                     @foreach ($categories as $category)
                         <tr>

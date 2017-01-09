@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    {{ trans('messages.edit', ['item' => trans_choice('messages.categories', 1)])}}
+                    {{ trans('messages.edit', ['item' => trans_choice('messages.categories', 1)]) }}
                 </div>
                 <div class="panel-body">
                     {!! Form::open([

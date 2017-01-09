@@ -44,7 +44,7 @@
                         <div class="{!! Form::showErrClass('password') !!}">
                             {!! Form::label('password', trans('messages.password'), ['class' => 'col-md-2 control-label']) !!}
                             <div class="col-md-6">
-                                {!! Form::password('password', null, [
+                                {!! Form::password('password', [
                                     'class' => 'form-control',
                                     'id' => 'password',
                                     'required',
