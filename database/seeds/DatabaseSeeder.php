@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Lesson;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('lesson_word')->truncate();
-        DB::table('lessons')->truncate();
+        Lesson::truncate();
         $this->call(CategoriesTableSeeder::class);
         $this->call(WordsTableSeeder::class);
         $this->call(MeaningsTableSeeder::class);

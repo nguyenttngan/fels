@@ -86,5 +86,10 @@ class User extends Authenticatable
         return $follows->contains($user);
     }
 
+    public function isAdmin()
+    {
+        return $this->role == config('custom.role.admin');
+    }
+
 
 }

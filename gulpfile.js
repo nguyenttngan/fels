@@ -19,6 +19,7 @@ elixir((mix) => {
         './bower_components/bootstrap-toggle/css/bootstrap-toggle.min.css'
         ])
        .webpack('app.js')
+       .scripts('form-delete.js')
        .scripts('lesson.js')
        .scripts('follow.js');
 });

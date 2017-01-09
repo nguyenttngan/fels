@@ -13,7 +13,7 @@
                         <thead>
                             <tr>
                                 <th>{{ trans_choice('messages.words', 2) }}</th>
-                                <th>{{ trans_choice('messages.meaning', 2) }}</th>
+                                <th>{{ trans_choice('messages.meanings', 2) }}</th>
                                 <th>{{ trans_choice('messages.yourans', 2) }}</th>
                             </tr>
                         </thead>

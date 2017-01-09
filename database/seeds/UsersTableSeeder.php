@@ -19,5 +19,11 @@ class UsersTableSeeder extends Seeder
             'password' => '123456',
             'email' => 'laravel-a8419c@inbox.mailtrap.io',
         ]);
+        User::where('id', 2)->update([
+            'name' => 'Admin',
+            'password' => '123456',
+            'email' => 'admin@fels.com',
+            'role' => 'admin',
+        ]);
     }
 }

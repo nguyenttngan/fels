@@ -13,6 +13,10 @@ return [
     'paginate' => [
         'category' => 4,
         'lesson' => 10,
+        'admin' => [
+            'word' => 10,
+            'category' => 10,
+        ],
     ],
     'wordsPerLesson' => 5,
     'url' => [
@@ -21,4 +25,9 @@ return [
     'image' => [
         'default' => 'default.jpg',
     ],
+    'role' => [
+        'admin' => 'admin',
+        'user' => 'user',
+    ],
+    'adminbrand' => 'FELS Administrator',
 ];
