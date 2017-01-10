@@ -24,6 +24,14 @@ class UpdateUserProfile extends FormRequest
      */
     public function rules()
     {
+        if (Auth::user()->isAdmin()) {
+            return [
+                'name' => 'required|max:255',
+                'email' => 'required|email|max:255|unique:users,email,' . $this->user,
+                'password' => 'min:6',
+            ];
+        }
+
         return [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),

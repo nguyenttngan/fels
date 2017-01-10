@@ -90,4 +90,19 @@ class User extends Authenticatable
     {
         return $this->role == config('custom.role.admin');
     }
+
+    /**
+     * @param $request
+     * @return string
+     */
+    public function updateAvatar($avatar)
+    {
+        $filename = $this->id . '_' . time() . '.' . $avatar->getClientOriginalExtension();
+        $avatar->move(config('custom.url.avatar'), $filename);
+        if ($this->avatar != config('custom.image.default')) {
+            unlink(public_path(config('custom.url.avatar')) . $this->avatar);
+        }
+
+        return $this->avatar = $filename;
+    }
 }

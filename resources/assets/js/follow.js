@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('.follow').click(function () {
         var self = $(this);
 
-        $.post(laroute.route('follow', {user: self.data('id')}), function() {
+        $.post(laroute.route('follows', {user: self.data('id')}), function() {
             if (self.hasClass('following')) {
                 self.text(self.data('follow'));
             } else {
