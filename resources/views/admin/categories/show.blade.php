@@ -6,11 +6,11 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    {{ $category->name }} : {{ $count }}
-                    {{ trans_choice('messages.words', $count) }}
+                    {{ $category->name }} : {{ $words->total() }}
+                    {{ trans_choice('messages.words', $words->total()) }}
                 </div>
                 <div class="panel-body">
-                @if ($count != 0)
+                @if ($words->total() != 0)
                     <table class="table table-striped">
                         <thead>
                             <tr>

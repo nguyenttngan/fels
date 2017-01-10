@@ -24,7 +24,22 @@ class HomeController extends Controller
         $lessons = Lesson::where('user_id', Auth::id())
             ->orderBy('created_at', 'desc')
             ->paginate(config('custom.paginate.lesson'));
+        $follows = User::findorFail(Auth::id())->follows()->get(['followed_id'])->all();
+        $lessonsOfFollowed = Lesson::whereIn('user_id', array_column($follows, 'followed_id'))
+            ->orderBy('created_at', 'desc')
+            ->paginate(config('custom.paginate.lesson'));
+        $users = User::where('role', '!=', config('custom.role.admin'))
+            ->where('id', '!=', Auth::id())
+            ->orderBy('created_at', 'asc')
+            ->paginate(config('custom.paginate.user'));
 
-        return view('web.home', compact('numOfLearnedWord', 'numOfFollowed', 'lessons'));
+        return view('web.home', [
+            'numOfLearnedWord' => $numOfLearnedWord,
+            'numOfFollowed' => $numOfFollowed,
+            'lessons' => $lessons,
+            'lessonsOfFollowed' => $lessonsOfFollowed,
+            'follows' => $follows,
+            'users' => $users,
+        ]);
     }
 }

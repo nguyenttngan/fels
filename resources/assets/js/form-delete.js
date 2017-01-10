@@ -1,4 +1,4 @@
-$(".btn-delete").click(function(e){
+$(".btn-delete").click(function (e) {
     if (confirm($(this).data("message"))) {
         $(this.closest('form')).submit();
     }

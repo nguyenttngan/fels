@@ -20,7 +20,6 @@ class CategoryController extends Controller
     {
         return view('admin.categories.index')->with([
             'categories' => Category::paginate(config('custom.paginate.admin.category')),
-            'count' => Category::count(),
         ]);
     }
 
@@ -69,7 +68,6 @@ class CategoryController extends Controller
         return view('admin.categories.show')->with([
             'category' => $category,
             'words' => $words,
-            'count' => $words->count(),
         ]);
     }
 
