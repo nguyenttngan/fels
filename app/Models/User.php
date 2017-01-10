@@ -90,6 +90,4 @@ class User extends Authenticatable
     {
         return $this->role == config('custom.role.admin');
     }
-
-
 }

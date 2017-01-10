@@ -21,5 +21,6 @@ elixir((mix) => {
        .webpack('app.js')
        .scripts('form-delete.js')
        .scripts('lesson.js')
-       .scripts('follow.js');
+       .scripts('follow.js')
+       .scripts('form-delete.js');
 });

@@ -31,7 +31,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">{{ trans_choice('messages.users', 2) }}</a>
+                        <a href="{{ action('Admin\UsersController@index') }}">{{ trans_choice('messages.users', 2) }}</a>
                     </li>
                 @endif
             </ul>

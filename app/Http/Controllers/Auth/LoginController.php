@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -20,7 +19,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
+    
     /**
      * Where to redirect users after login.
      *
@@ -43,7 +42,6 @@ class LoginController extends Controller
         if ($user->isAdmin()) {
             return redirect()->action('Admin\HomeController@index');
         }
-
         return redirect()->action('Web\HomeController@index');
     }
 }
