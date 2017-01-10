@@ -69,7 +69,12 @@ class User extends Authenticatable
      */
     public function getAvatarUrlAttribute()
     {
-        return url(config('custom.url.avatar') . $this->avatar);
+        $avatar = $this->avatar;
+        if ($this->isLocalAvatar() || $this->isDefaultAvatar()) {
+            return url(config('custom.url.avatar') . $avatar);
+        }
+
+        return $avatar;
     }
 
     /**
@@ -102,12 +107,22 @@ class User extends Authenticatable
      */
     public function updateAvatar($avatar)
     {
-        $filename = $this->id . '_' . time() . '.' . $avatar->getClientOriginalExtension();
+        $filename = $this->id . '_' . config('app.name') . time() . '.' . $avatar->getClientOriginalExtension();
         $avatar->move(config('custom.url.avatar'), $filename);
-        if ($this->avatar != config('custom.image.default')) {
+        if ($this->isLocalAvatar()) {
             unlink(public_path(config('custom.url.avatar')) . $this->avatar);
         }
 
         return $this->avatar = $filename;
+    }
+
+    public function isDefaultAvatar()
+    {
+        return $this->avatar == config('custom.image.default');
+    }
+
+    public function isLocalAvatar()
+    {
+        return strpos($this->avatar, config('app.name')) !== false;
     }
 }

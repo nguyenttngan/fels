@@ -32,4 +32,9 @@ return [
         'user' => 'user',
     ],
     'adminbrand' => 'FELS Administrator',
+    'provider' => [
+        'facebook' => 'facebook',
+        'google' => 'google',
+        'twitter' => 'twitter',
+    ],
 ];

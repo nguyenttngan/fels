@@ -21,7 +21,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'password' => $password ?: $password = 'secret',
         'remember_token' => str_random(10),
         'role' => 'user',
-        'avatar' => $faker->name,
+        'avatar' => config('custom.image.default'),
     ];
 });
 

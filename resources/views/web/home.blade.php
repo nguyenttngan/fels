@@ -33,7 +33,7 @@
                 </ul>
             </div>
             <div class="col-md-8">
-                <div class="panel panel-info">
+                <div class="panel panel-primary">
                     <div class="panel-heading">{{ trans_choice('messages.activities', $lessons->total()) }}</div>
                     <div class="panel-body">
                     @if ($lessons->total() != 0)
@@ -58,7 +58,7 @@
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-4">
-                <div class="panel panel-info">
+                <div class="panel panel-primary">
                     <div class="panel-heading">@lang('messages.following')</div>
                     <div class="panel-body">
                     @if (count($follows) != 0)

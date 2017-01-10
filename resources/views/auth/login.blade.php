@@ -51,7 +51,7 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                {!! Form::submit('Login', ['class' => 'btn btn-primary']) !!}
+                                {!! Form::submit('Login', ['class' => 'btn btn-primary btn-raised']) !!}
 
                                 <a class="btn btn-link"
                                     href="{{ action('Auth\ForgotPasswordController@showLinkRequestForm') }}">
@@ -60,6 +60,26 @@
                             </div>
                         </div>
                     {!! Form::close() !!}
+                    <div class="col-md-4 col-md-offset-4">
+                        <p>@lang('messages.loginwith') :</p>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <a href="{{ action('Auth\SocialAuthController@redirect', [
+                            'provider' => config('custom.provider.facebook')
+                            ]) }}" class="btn btn-info btn-raised">
+                            @lang('messages.facebook')
+                        </a>
+                        <a href="{{ action('Auth\SocialAuthController@redirect', [
+                            'provider' => config('custom.provider.google')
+                            ]) }}" class="btn btn-danger btn-raised">
+                            @lang('messages.google')
+                        </a>
+                        <a href="{{ action('Auth\SocialAuthController@redirect', [
+                            'provider' => config('custom.provider.twitter')
+                            ]) }}" class="btn btn-info btn-raised">
+                            @lang('messages.twitter')
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
