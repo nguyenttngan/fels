@@ -54,4 +54,5 @@ return [
     'notfollowing' => ':User haven\'t followed anyone.',
     'you' => 'You',
     'users' => 'Users',
+    'correct' => 'Correct'
 ];
