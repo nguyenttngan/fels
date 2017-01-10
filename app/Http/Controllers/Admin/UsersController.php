@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreUser;
+use App\Http\Requests\UpdateUserProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -64,7 +66,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.users.show')->with([
+            'user' => User::findOrFail($id)
+        ]);
     }
 
     /**
@@ -75,7 +79,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.users.edit')->with([
+            'user' => User::findOrFail($id)
+        ]);
     }
 
     /**
@@ -85,9 +91,21 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserProfile $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->fill($request->except('password', 'avatar'));
+        if ($request->hasFile('avatar')) {
+            $user->updateAvatar($request->file('avatar'));
+        }
+
+        if ($request->get('password') != "") {
+            $user->password = $request->get('password');
+        }
+
+        $user->save();
+
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -98,6 +116,32 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        DB::beginTransaction();
+        try {
+            foreach ($user->lessons as $lesson) {
+                $lesson->words()->detach();
+            }
+
+            foreach ($user->follows as $follow) {
+                $follow->detach();
+            }
+            $user->lessons()->delete();
+            $user->follows()->delete();
+            $user->delete();
+            DB::commit();
+
+            return redirect()
+                ->action('Admin\UsersController@index')
+                ->with('status', trans('messages.success', [
+                    'Action' => trans('messages.delete'),
+                    'item' => trans_choice('messages.users', 1),
+                ]));
+        } catch(\Exception $e) {
+            DB::rollBack();
+
+            return redirect()
+                ->action('Admin\UsersController@index');
+        }
     }
 }

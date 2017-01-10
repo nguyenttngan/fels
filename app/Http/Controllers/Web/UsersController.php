@@ -49,14 +49,7 @@ class UsersController extends Controller
         $user = Auth::user();
         $user->fill($request->except('password', 'avatar'));
         if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            $filename = $user->id . '_' . time() . '.' . $avatar->getClientOriginalExtension();
-            $avatar->move(config('custom.url.avatar'), $filename);
-            if ($user->avatar != config('custom.image.default')) {
-                unlink(public_path(config('custom.url.avatar')) . $user->avatar);
-            }
-
-            $user->avatar = $filename;
+            $user->updateAvatar($request->file('avatar'));
         }
 
         if ($request->get('password') != "") {

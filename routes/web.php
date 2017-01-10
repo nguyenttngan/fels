@@ -19,7 +19,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'user'], function() {
         Route::get('/home', 'Web\HomeController@index');
 
-        Route::get('/word', 'Web\WordsController@index');
+        Route::get('/words', 'Web\WordsController@index');
 
         Route::get('/categories', 'Web\CategoriesController@index');
 
@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/lessons/create/{categoryId}/{lessonId?}/{count?}', 'Web\LessonsController@create');
         Route::post('/lessons/update', 'Web\LessonsController@update');
 
-        Route::post('/follow/{user}', 'Web\FollowsController@follow')->name('follow');
+        Route::post('/follows/{user}', 'Web\FollowsController@follow')->name('follows');
         Route::get('/follows/{user}', 'Web\FollowsController@show');
     });
 
@@ -38,8 +38,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('/users', 'Admin\UsersController');
     });
 
-    Route::get('/user/show/{user?}', 'Web\UsersController@show');
-    Route::get('/user/edit', 'Web\UsersController@edit');
+    Route::get('/users/show/{user?}', 'Web\UsersController@show');
+    Route::get('/users/edit', 'Web\UsersController@edit');
     Route::resource('user', 'Web\UsersController', ['only' => [
         'update'
     ]]);
