@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function index()
     {
         $numOfLearnedWord = Word::query()->learned(Auth::id())->count();
-        $numOfFollowed = Auth::user()->follows()->count();
+        $numOfFollowed = Auth::user()->followers->count();
         $lessons = Lesson::where('user_id', Auth::id())
             ->orderBy('created_at', 'desc')
             ->paginate(config('custom.paginate.lesson'));
