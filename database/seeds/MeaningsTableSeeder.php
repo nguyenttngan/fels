@@ -15,10 +15,13 @@ class MeaningsTableSeeder extends Seeder
     {
         Meaning::truncate();
         $words = Word::all();
+        $i = 1;
         foreach ($words as $word) {
             factory(Meaning::class, 4)->create([
                 'word_id' => $word->id,
             ]);
+            $word->meaning_id = $i;
+            $i += 4;
         }
     }
 }
