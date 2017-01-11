@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/home', 'Admin\HomeController@index');
         Route::resource('/categories', 'Admin\CategoryController');
         Route::resource('/users', 'Admin\UsersController');
+        Route::resource('/words', 'Admin\WordsController');
     });
 
     Route::get('/users/show/{user?}', 'Web\UsersController@show');

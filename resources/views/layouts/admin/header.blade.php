@@ -23,7 +23,7 @@
                 &nbsp;
                 @if (!Auth::guest())
                     <li>
-                        <a href="#">{{ trans_choice('messages.words', 2) }}</a>
+                        <a href="{{ action('Admin\WordsController@index') }}">{{ trans_choice('messages.words', 2) }}</a>
                     </li>
                     <li>
                         <a href="{{ action('Admin\CategoryController@index') }}">
