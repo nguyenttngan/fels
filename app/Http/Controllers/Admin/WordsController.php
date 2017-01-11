@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreWord;
+use App\Http\Requests\UpdateWord;
 use App\Models\Category;
 use App\Models\Meaning;
 use App\Models\Word;
@@ -29,20 +30,52 @@ class WordsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(StoreWord $request)
+    public function create()
     {
-
+        return view('admin.words.create')->with([
+            'categoriesCollection' => Category::all()->pluck('name', 'id'),
+        ]);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreWord $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreWord $request)
     {
-        //
+        $data = $request->all();
+        DB::beginTransaction();
+        try {
+            $word = Word::create([
+                'word' => $data['word'],
+                'category_id' => $data['category'],
+                'meaning_id' => 0
+            ]);
+
+            foreach ($data['meaning'] as $key => $meaning) {
+                $meaning = Meaning::create([
+                    'word_id' => $word->id,
+                    'content' => $meaning
+                ]);
+                if ($key == 0) {
+                    $word->meaning_id = $meaning->id;
+                    $word->save();
+                }
+            }
+            DB::commit();
+
+            return redirect()
+                ->action('Admin\WordsController@index')
+                ->with('status', trans('messages.success', [
+                    'Action' => trans('messages.create'),
+                    'item' => trans_choice('messages.words', 1),
+                ]));
+        } catch(\Exception $e) {
+            DB::rollBack();
+
+            return redirect()
+                ->action('Admin\WordsController@index');
+        }
     }
 
     /**
@@ -78,19 +111,17 @@ class WordsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param StoreWord $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(StoreWord $request, $id)
+    public function update(UpdateWord $request, $id)
     {
         $data = $request->all();
         DB::beginTransaction();
         try {
             Word::where('id', $id)->update([
-                'word' => $data['word'],
+                'word' => $data['word-content'],
                 'category_id' => $data['category'],
             ]);
 
@@ -124,6 +155,29 @@ class WordsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $word = Word::findOrFail($id);
+        DB::beginTransaction();
+        try {
+            foreach($word->meanings as $meaning) {
+                $meaning->delete();
+            }
+            if($word->lesson) {
+                $word->lesson->detach();
+            }
+            $word->delete();
+            DB::commit();
+
+            return redirect()
+                ->action('Admin\WordsController@index')
+                ->with('status', trans('messages.success', [
+                    'Action' => trans('messages.delete'),
+                    'item' => trans_choice('messages.categories', 1),
+                ]));
+        } catch(\Exception $e) {
+            DB::rollBack();
+
+            return redirect()
+                ->action('Admin\WordsController@index');
+        }
     }
 }
