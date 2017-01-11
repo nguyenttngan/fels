@@ -12,8 +12,9 @@ return [
     ],
     'paginate' => [
         'category' => 4,
-        'lesson' => 10,
-        'user' => 10,
+        'lesson' => 5,
+        'user' => 5,
+        'word' => 10,
         'admin' => [
             'word' => 10,
             'category' => 10,

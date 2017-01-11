@@ -12,7 +12,6 @@
 
     <!-- Styles -->
     {!! Html::style(elixir('css/app.css')) !!}
-    {!! Html::style(elixir('css/bootstrap-material-design.css')) !!}
 
 </head>
 <body>
@@ -24,10 +23,6 @@
     <!-- Scripts -->
     {!! Html::script(elixir('js/app.js')) !!}
     {!! Html::script(elixir('js/laroute.js')) !!}
-    {!! Html::script(elixir('js/material.js')) !!}
-    <script>
-        $.material.init();
-    </script>
     @yield('js')
 </body>
 </html>

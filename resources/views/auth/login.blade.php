@@ -61,23 +61,21 @@
                         </div>
                     {!! Form::close() !!}
                     <div class="col-md-4 col-md-offset-4">
-                        <p>@lang('messages.loginwith') :</p>
-                    </div>
-                    <div class="col-md-8 col-md-offset-2">
+                        @lang('messages.loginwith') :
                         <a href="{{ action('Auth\SocialAuthController@redirect', [
                             'provider' => config('custom.provider.facebook')
-                            ]) }}" class="btn btn-info btn-raised">
-                            @lang('messages.facebook')
+                            ]) }}" class="btn btn-social-icon btn-facebook">
+                            <span class="fa fa-facebook"></span>
                         </a>
                         <a href="{{ action('Auth\SocialAuthController@redirect', [
                             'provider' => config('custom.provider.google')
-                            ]) }}" class="btn btn-danger btn-raised">
-                            @lang('messages.google')
+                            ]) }}" class="btn btn-social-icon btn-google">
+                            <span class="fa fa-google"></span>
                         </a>
                         <a href="{{ action('Auth\SocialAuthController@redirect', [
                             'provider' => config('custom.provider.twitter')
-                            ]) }}" class="btn btn-info btn-raised">
-                            @lang('messages.twitter')
+                            ]) }}" class="btn btn-social-icon btn-twitter">
+                            <span class="fa fa-twitter"></span>
                         </a>
                     </div>
                 </div>

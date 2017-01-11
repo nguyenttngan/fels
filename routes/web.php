@@ -21,12 +21,17 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::get('/words', 'Web\WordsController@index');
 
-        Route::get('/categories', 'Web\CategoriesController@index');
+        Route::group(['prefix' => 'categories'], function() {
+            Route::get('/', 'Web\CategoriesController@index');
+            Route::get('/create/{categoryId}', 'Web\CategoriesController@create');
+        });
 
-        Route::get('/lessons', 'Web\LessonsController@index');
-        Route::get('/lessons/show/{lessonId}', 'Web\LessonsController@show');
-        Route::get('/lessons/create/{categoryId}/{lessonId?}/{count?}', 'Web\LessonsController@create');
-        Route::post('/lessons/update', 'Web\LessonsController@update');
+        Route::group(['prefix' => 'lessons'], function() {
+            Route::get('/', 'Web\LessonsController@index');
+            Route::get('/show/{lessonId}', 'Web\LessonsController@show');
+            Route::get('/create/{categoryId}/{lessonId?}/{count?}', 'Web\LessonsController@create');
+            Route::post('/update', 'Web\LessonsController@update');
+        });
 
         Route::post('/follows/{user}', 'Web\FollowsController@follow')->name('follows');
         Route::get('/follows/{user}', 'Web\FollowsController@show');

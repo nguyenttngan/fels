@@ -23,5 +23,6 @@ elixir((mix) => {
        .scripts('lesson.js')
        .scripts('follow.js')
        .sass('./node_modules/bootstrap-material-design/dist/sassc/bootstrap-material-design.css')
-       .scripts('./node_modules/bootstrap-material-design/dist/js/material.js');
+       .scripts('./node_modules/bootstrap-material-design/dist/js/material.js')
+       .sass('bootstrap-social.css');
 });
