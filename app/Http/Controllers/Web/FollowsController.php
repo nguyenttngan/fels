@@ -27,7 +27,7 @@ class FollowsController extends Controller
      */
     public function show(User $user)
     {
-        $users = $user->follows;
+        $users = $user->followers;
 
         return view('web.follows.show', compact('users', 'user'));
     }
