@@ -20,14 +20,14 @@
                                 {!! Form::hidden('lessonId', $lessonId, null) !!}
                                 {!! Form::hidden('count', $count, null) !!}
                             </div>
-                                <div class="col-md-5 col-md-offset-2">
-                                    @foreach ($word->meanings as $meaning)
-                                        {!! Form::radio('meanings', $meaning->id, null, [
-                                            'required'
-                                        ]) !!} {{ $meaning->content }}<br>
-                                    @endforeach
-                                    {!! Form::hidden('selectedMng') !!}
-                                </div>
+                            <div class="col-md-5 col-md-offset-2">
+                            @foreach ($word->meanings as $meaning)
+                                {!! Form::radio('meanings', $meaning->id, null, [
+                                    'required',
+                                ]) !!} {{ $meaning->content }} </br>
+                            @endforeach
+                                {!! Form::hidden('selectedMng') !!}
+                            </div>
                         </div>
                         <div class="panel-footer">
                             @if ($count < config('custom.wordsPerLesson'))

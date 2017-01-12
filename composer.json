@@ -12,8 +12,9 @@
     "barryvdh/laravel-debugbar": "^2.3",
     "doctrine/dbal": "^2.5",
     "laravel/framework": "5.3.*",
+    "laravel/socialite": "^2.0",
     "laravelcollective/html": "^5.3.0",
-    "lord/laroute" : "2.*"
+    "lord/laroute": "2.*"
   },
   "require-dev": {
     "barryvdh/laravel-ide-helper": "^2.2",

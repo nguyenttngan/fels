@@ -45,3 +45,5 @@ Route::group(['middleware' => 'auth'], function() {
         'update'
     ]]);
 });
+Route::get('social/redirect/{provider}', 'Auth\SocialAuthController@redirect');
+Route::get('social/handle/{provider}', 'Auth\SocialAuthController@handle');

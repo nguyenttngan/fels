@@ -22,5 +22,6 @@ elixir((mix) => {
        .scripts('form-delete.js')
        .scripts('lesson.js')
        .scripts('follow.js')
-       .scripts('form-delete.js');
+       .sass('./node_modules/bootstrap-material-design/dist/sassc/bootstrap-material-design.css')
+       .scripts('./node_modules/bootstrap-material-design/dist/js/material.js');
 });
