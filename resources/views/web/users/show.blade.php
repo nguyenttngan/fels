@@ -4,7 +4,7 @@
     @if($user->id != Auth::id())
         @if($following)
             {!! Form::button(trans('messages.following'), [
-                'class' => 'button follow following',
+                'class' => 'btn button follow following',
                 'data-id' => $user->id,
                 'data-follow' => trans('messages.follow'),
                 'data-following' => trans('messages.following'),
@@ -12,7 +12,7 @@
             ]) !!}
         @else
             {!! Form::button(trans('messages.follow'), [
-                'class' => 'button follow',
+                'class' => 'btn button follow',
                 'data-id' => $user->id,
                 'data-follow' => trans('messages.follow'),
                 'data-following' => trans('messages.following'),
