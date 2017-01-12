@@ -14,11 +14,13 @@
     {!! Html::style(elixir('css/app.css')) !!}
     {!! Html::style(elixir('css/bootstrap-social.css')) !!}
 
+
 </head>
 <body>
     <div id="app">
         @include('layouts.header')
         @yield('content')
+        @include('layouts.footer')
     </div>
 
     <!-- Scripts -->

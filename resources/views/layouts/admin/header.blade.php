@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-static-top header">
     <div class="container">
         <div class="navbar-header">
 
@@ -18,23 +18,6 @@
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                &nbsp;
-                @if (!Auth::guest())
-                    <li>
-                        <a href="{{ action('Admin\WordsController@index') }}">{{ trans_choice('messages.words', 2) }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ action('Admin\CategoryController@index') }}">
-                            {{ trans_choice('messages.categories', 2) }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ action('Admin\UsersController@index') }}">{{ trans_choice('messages.users', 2) }}</a>
-                    </li>
-                @endif
-            </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
@@ -72,3 +55,50 @@
         </div>
     </div>
 </nav>
+
+
+    <!-- Left Side Of Navbar -->
+<div class="nav-side-menu">
+    <div class="menu-list">
+        @if (!Auth::guest())
+            <ul>
+                <li data-toggle="collapse" data-target="#user" class="collapsed">
+                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i></i>Users<span class="caret"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="user">
+                    <li>
+                        <a href="{{ action('Admin\UsersController@index') }}">List users</a>
+                    </li>
+                    <li>
+                        <a href="{{ action('Admin\UsersController@create') }}">Add user</a>
+                    </li>
+                </ul>
+                <li data-toggle="collapse" data-target="#category" class="collapsed">
+                    <a href="#"><i class="fa fa-suitcase" aria-hidden="true"></i>Categories<span class="caret"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="category">
+                    <li>
+                        <a href="{{ action('Admin\CategoryController@index') }}">List categories</a>
+                    </li>
+                    <li>
+                        <a href="{{ action('Admin\CategoryController@create') }}">Add categories</a>
+                    </li>
+                </ul>
+                <li data-toggle="collapse" data-target="#word" class="collapsed">
+                    <a href="#"><i class="fa fa-file-word-o" aria-hidden="true"></i>Words<span class="caret"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="word">
+                    <li>
+                        <a href="{{ action('Admin\WordsController@index') }}">List words</a>
+                    </li>
+                    <li>
+                        <a href="{{ action('Admin\WordsController@create') }}">Add word</a>
+                    </li>
+                </ul>
+
+            </ul>
+        @endif
+    </div>
+</div>
+
+

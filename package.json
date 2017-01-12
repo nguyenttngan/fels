@@ -17,5 +17,8 @@
   },
   "require": {
     "lord/laroute": "2.*"
+  },
+  "dependencies": {
+    "bootstrap-material-design": "^0.5.10"
   }
 }

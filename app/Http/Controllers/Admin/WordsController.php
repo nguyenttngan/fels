@@ -171,7 +171,7 @@ class WordsController extends Controller
                 ->action('Admin\WordsController@index')
                 ->with('status', trans('messages.success', [
                     'Action' => trans('messages.delete'),
-                    'item' => trans_choice('messages.categories', 1),
+                    'item' => trans_choice('messages.words', 1),
                 ]));
         } catch(\Exception $e) {
             DB::rollBack();

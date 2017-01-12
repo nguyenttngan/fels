@@ -18,8 +18,9 @@
                     </a>
                 </li>
             </ul>
-            @lang('messages.members')
-            <div class="panel">
+            <div class="panel panel-info">
+                <div class="panel-heading">@lang('messages.members')</div>
+                    <div class="panel-body">
                     <ul class="list-group">
                     @foreach ($users as $user)
                         <li class="list-group-item">
@@ -31,6 +32,7 @@
                     @endforeach
                     </ul>
                     {{ $users->links() }}
+                    </div>
             </div>
         </div>
         <div class="col-md-8 grid">
