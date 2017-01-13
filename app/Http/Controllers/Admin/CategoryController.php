@@ -115,14 +115,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findorFail($id);
-        /*if ($category->words()->count() != 0) {
-            return redirect()
-                ->action('Admin\CategoryController@index')
-                ->with('warning', trans('messages.notallowdelete', [
-                    'category' => $category->name
-                ]));
-        }*/
-
         DB::beginTransaction();
         try {
             foreach ($category->lessons as $lesson) {

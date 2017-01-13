@@ -122,7 +122,6 @@ class UsersController extends Controller
             foreach ($user->lessons as $lesson) {
                 $lesson->words()->detach();
             }
-
             foreach ($user->follows as $follow) {
                 $follow->detach();
             }

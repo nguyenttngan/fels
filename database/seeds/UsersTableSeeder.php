@@ -13,16 +13,19 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::truncate();
-        factory(User::class, 5)->create();
-        User::find(1)->update([
+        factory(User::class, 50)->create();
+        User::whereId(12)->update([
             'name' => 'Tom Jerry',
-            'password' => '123456',
             'email' => 'laravel-a8419c@inbox.mailtrap.io',
         ]);
-        User::find(2)->update([
-            'name' => 'Admin',
-            'password' => '123456',
-            'email' => 'admin@fels.com',
+        User::whereId(22)->update([
+            'name' => 'Admin1',
+            'email' => 'admin1@fels.com',
+            'role' => 'admin',
+        ]);
+        User::whereId(32)->update([
+            'name' => 'Admin2',
+            'email' => 'admin2@fels.com',
             'role' => 'admin',
         ]);
     }
