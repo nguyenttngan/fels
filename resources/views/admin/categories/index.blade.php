@@ -9,6 +9,11 @@
                 {{ session('status') }}
             </div>
         @endif
+        @if (session('warning'))
+        <div class="alert alert-danger">
+            {{ session('warning') }}
+        </div>
+        @endif
             <div class="panel panel-info">
                 <div class="panel-heading clearfix">
                     <div class="panel-title pull-left">
@@ -37,6 +42,7 @@
                             <td>
                                 @include('layouts.admin.includes._delete', [
                                     'action' => ['Admin\CategoryController@destroy', 'category' => $category->id],
+                                    'message' => trans('messages.confirmDeleteCategory'),
                                 ])
                             </td>
                         </tr>

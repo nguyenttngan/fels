@@ -40,6 +40,7 @@
                                         <td>
                                             @include('layouts.admin.includes._delete', [
                                                 'action' => ['Admin\UsersController@destroy', 'user' => $user->id],
+                                                'message' => trans('messages.confirmDelete'),
                                             ])
                                         </td>
                                     </tr>

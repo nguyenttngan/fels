@@ -18,10 +18,19 @@ class WordsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $categoryId = $request->category_id;
+        if ($categoryId) {
+            $words = Word::where('words.category_id', $categoryId)->paginate(config('custom.paginate.admin.word'));
+        } else {
+            $words = Word::paginate(config('custom.paginate.admin.word'));
+        }
+
         return view('admin.words.index')->with([
-            'words' => Word::paginate(config('custom.paginate.admin.word')),
+            'words' => $words,
+            'categoryId' => $categoryId,
+            'categorySelect' => Category::all()->pluck('name', 'id'),
         ]);
     }
 
@@ -65,7 +74,7 @@ class WordsController extends Controller
             DB::commit();
 
             return redirect()
-                ->action('Admin\WordsController@index')
+                ->action('Admin\WordsController@index', ['category_id' => $word->category->id])
                 ->with('status', trans('messages.success', [
                     'Action' => trans('messages.create'),
                     'item' => trans_choice('messages.words', 1),
@@ -97,7 +106,7 @@ class WordsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $word = Word::findOrFail($id);
 
@@ -134,7 +143,7 @@ class WordsController extends Controller
             DB::commit();
 
             return redirect()
-                ->action('Admin\WordsController@index')
+                ->action('Admin\WordsController@index', ['category_id' => $data['category']])
                 ->with('status', trans('messages.success', [
                     'Action' => trans('messages.update'),
                     'item' => trans_choice('messages.words', 1),
@@ -168,7 +177,7 @@ class WordsController extends Controller
             DB::commit();
 
             return redirect()
-                ->action('Admin\WordsController@index')
+                ->action('Admin\WordsController@index', ['category_id' => $word->category->id])
                 ->with('status', trans('messages.success', [
                     'Action' => trans('messages.delete'),
                     'item' => trans_choice('messages.words', 1),

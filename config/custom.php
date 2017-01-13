@@ -15,6 +15,7 @@ return [
         'lesson' => 5,
         'user' => 5,
         'word' => 10,
+        'page' => 1,
         'admin' => [
             'word' => 5,
             'category' => 10,

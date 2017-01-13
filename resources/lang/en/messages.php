@@ -62,4 +62,5 @@ return [
     'facebook' => 'Facebook',
     'google' => 'Google+',
     'twitter' => 'Twitter',
+    'confirmDeleteCategory' => 'Are you sure to delete this category and its words?',
 ];
