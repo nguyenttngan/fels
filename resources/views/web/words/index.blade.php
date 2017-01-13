@@ -4,5 +4,6 @@
     @foreach ($words as $word)
         <li class="list-group-item">{{ $word->word }}</li>
     @endforeach
+    {{ $words->links() }}
     </div>
 @endsection
