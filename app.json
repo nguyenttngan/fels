@@ -1,0 +1,18 @@
+{
+  "name": "fels_225",
+  "scripts": {
+  },
+  "env": {
+    "APP_KEY": "base64:Scrk0ZUAPfEqcRtqWRBrj6Kq/EKdOkM2Wi43m3OCZjk="
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    }
+  ]
+}
