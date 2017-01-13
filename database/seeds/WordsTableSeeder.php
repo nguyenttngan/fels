@@ -15,11 +15,15 @@ class WordsTableSeeder extends Seeder
     {
         Word::truncate();
         $categories = Category::all();
+        $j = 1;
         foreach ($categories as $category) {
-            factory(Word::class, 10)->create([
-                'category_id' => $category->id,
-                'meaning_id' => 1,
-            ]);
+            for ($i = 0; $i < 10; $i++) {
+                factory(Word::class, 1)->create([
+                    'category_id' => $category->id,
+                    'meaning_id' => rand($j, $j+3),
+                ]);
+                $j += 4;
+            }
         }
     }
 }
