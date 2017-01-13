@@ -13,7 +13,7 @@
                     {{ trans_choice('messages.words', 2) }}
                 </div>
                 <div class="panel-body">
-                    <a class="btn btn-info pull-right" href="{{ action('Web\LessonsController@create', [
+                    <a class="btn btn-info pull-right" href="{{ action('Web\CategoriesController@create', [
                         'categoryId' => $category->id,
                     ]) }}">@lang('messages.start')</a>
                     {{ $category->words->take(5)->implode('word', ',') }}

@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        {{ $category->name }}: {{ $count }}/{{ config('custom.wordsPerLesson') }}
+                        {{ $category->name }} : {{ $count }}/{{ config('custom.wordsPerLesson') }}
                     </div>
                     {!! Form::open(['method' => 'POST', 'action' => 'Web\LessonsController@update']) !!}
                         <div class="panel-body">

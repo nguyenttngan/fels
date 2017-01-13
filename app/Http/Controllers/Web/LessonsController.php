@@ -48,6 +48,10 @@ class LessonsController extends Controller
     {
         $userId = Auth::id();
         $category = Category::find($categoryId);
+        if ($category->words()->count() < config('custom.wordsPerLesson')) {
+            abort(404, trans('messages.notenoughword'));
+        }
+
         if ($request->session()->has('word')) {
             $word = session('word');
         } else {
@@ -57,10 +61,11 @@ class LessonsController extends Controller
                 ->first(['words.*']);
             if (!$word) {
                 $word = Word::where('words.category_id', $categoryId)
-                    ->relearned($lessonId)
+                    ->relearned($userId)
                     ->inRandomOrder()
                     ->first(['words.*']);
             }
+
             session(['word' => $word]);
         }
 
@@ -87,7 +92,6 @@ class LessonsController extends Controller
         $lessonId = $data['lessonId'];
         $selectedMeaning = $data['selectedMng'];
         $count = $data['count'];
-        $category = Category::find($categoryId);
         DB::beginTransaction();
         try {
             if (!$lessonId) {

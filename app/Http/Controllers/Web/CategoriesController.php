@@ -15,4 +15,16 @@ class CategoriesController extends Controller
             'categories' => $categories,
         ]);
     }
+
+    public function create(Request $request, $categoryId)
+    {
+        if (session('word')) {
+            $request->session()->forget('word');
+        }
+
+        return redirect()->action('Web\LessonsController@create', [
+            'categoryId' => $categoryId,
+        ]);
+
+    }
 }
