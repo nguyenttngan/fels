@@ -11,13 +11,13 @@ return [
         'unlearned' => 'unlearned',
     ],
     'paginate' => [
-        'category' => 4,
-        'lesson' => 5,
-        'user' => 5,
+        'category' => 10,
+        'lesson' => 10,
+        'user' => 10,
         'word' => 10,
         'page' => 1,
         'admin' => [
-            'word' => 5,
+            'word' => 10,
             'category' => 10,
             'user' => 10,
         ],

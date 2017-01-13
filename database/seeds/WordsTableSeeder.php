@@ -17,7 +17,7 @@ class WordsTableSeeder extends Seeder
         $categories = Category::all();
         $j = 1;
         foreach ($categories as $category) {
-            for ($i = 0; $i < 10; $i++) {
+            for ($i = 0; $i < 50; $i++) {
                 factory(Word::class, 1)->create([
                     'category_id' => $category->id,
                     'meaning_id' => rand($j, $j+3),
