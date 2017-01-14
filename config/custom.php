@@ -16,7 +16,7 @@ return [
         'user' => 5,
         'word' => 10,
         'admin' => [
-            'word' => 10,
+            'word' => 5,
             'category' => 10,
             'user' => 10,
         ],
