@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     {!! Html::style(elixir('css/app.css')) !!}
+    {{--{!! Html::style(elixir('css/follow.css')) !!}--}}
     {!! Html::style(elixir('css/bootstrap-social.css')) !!}
 
 

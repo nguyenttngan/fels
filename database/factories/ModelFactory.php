@@ -34,8 +34,6 @@ $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Word::class, function (Faker\Generator $faker) {
     return [
         'word' => $faker->text(10),
-        'category_id' => $faker->numberBetween(1, 2),
-        'meaning_id' => $faker->unique()->numberBetween(1, 200),
     ];
 });
 

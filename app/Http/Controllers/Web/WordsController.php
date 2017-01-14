@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 /**
  * Created by PhpStorm.
@@ -40,7 +41,12 @@ class WordsController extends Controller
         } elseif ($filter == config("custom.filter.unlearned")) {
             $query->unlearned($userId);
         }
-        $words = $query->get(['words.*']);
+        $getWords = $query->get(['words.*']);
+        $page = Paginator::resolveCurrentPage()?:config('custom.paginate.page');
+        $perPage = config('custom.paginate.word');
+        $words = new Paginator($getWords->forPage($page, $perPage), $getWords->count(), $perPage, $page, [
+            'path' => $request->fullUrl(),
+        ]);
 
         return view('web.words.index', compact('filter', 'categoryId', 'words', 'categorySelect'));
     }

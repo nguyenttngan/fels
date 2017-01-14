@@ -18,10 +18,19 @@ class WordsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $categoryId = $request->category_id;
+        if ($categoryId) {
+            $words = Word::where('words.category_id', $categoryId)->paginate(config('custom.paginate.admin.word'));
+        } else {
+            $words = Word::paginate(config('custom.paginate.admin.word'));
+        }
+
         return view('admin.words.index')->with([
-            'words' => Word::paginate(config('custom.paginate.admin.word')),
+            'words' => $words,
+            'categoryId' => $categoryId,
+            'categorySelect' => Category::all()->pluck('name', 'id'),
         ]);
     }
 

@@ -204,14 +204,13 @@ ul {
     list-style-type: none;
 }
 
-
-
 .following{
     background-color: #3097D1;
     background-repeat: repeat-x;
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
+
 .following:hover{
     background-color: #ff6666;
     background-repeat: repeat-x;
@@ -219,4 +218,3 @@ ul {
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
-

@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
-    {{ $exception->getMessage() }}
+    <div class="alert alert-danger">
+        {{ $exception->getMessage() }}
+    </div>
 </div>
 @endsection
