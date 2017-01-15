@@ -19,15 +19,6 @@
             ]) !!}
             {!! Form::showErrField('name') !!}
         </div>
-        <div class="{!! Form::showErrClass('password') !!}">
-            <label>{{ trans('messages.password') }}</label>
-            {!! Form::password('password', [
-                'placeholder' => trans('messages.unchanged'),
-                'class' => 'form-control',
-                'id' => 'password',
-            ]) !!}
-            {!! Form::showErrField('password') !!}
-        </div>
         <div class="{!! Form::showErrClass('email') !!}">
             <label>{{ trans('messages.email') }} </label>
             {!! Form::email('email', $user->email, [
@@ -37,8 +28,27 @@
             ]) !!}
             {!! Form::showErrField('email') !!}
         </div>
+        <div class="{!! Form::showErrClass('password') !!}">
+            <label>{{ trans('messages.password') }}</label>
+            {!! Form::password('password', [
+                'placeholder' => trans('messages.unchanged'),
+                'class' => 'form-control',
+                'id' => 'password',
+            ]) !!}
+            {!! Form::showErrField('password') !!}
+        </div>
         <div>
-            {!! Form::submit(trans('messages.save'), ['class' => 'btn btn-primary']) !!}
+            <label>{{ trans('messages.confirm_password') }}</label>
+                {!! Form::password('password_confirmation', [
+                    'class' => 'form-control',
+                    'id' => 'password-confirm',
+                ]) !!}
+        </div>
+        &nbsp;
+        <div>
+            {!! Form::submit(trans('messages.save'), [
+            'class' => 'btn btn-primary',
+            ]) !!}
         </div>
         {!! Form::close() !!}
     </div>

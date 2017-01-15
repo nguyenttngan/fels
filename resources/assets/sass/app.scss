@@ -41,6 +41,7 @@
     width: 240px;
     height: 100%;
     color: #e1ffff;
+    position: fixed ;
 }
 .nav-side-menu .brand {
     background-color: #23282e;
@@ -217,4 +218,9 @@ ul {
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+body {
+    background-attachment: fixed;
+    padding-bottom: 100px;
 }
