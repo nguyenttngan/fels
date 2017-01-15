@@ -42,6 +42,7 @@
                             <td>
                                 @include('layouts.admin.includes._delete', [
                                     'action' => ['Admin\CategoryController@destroy', 'category' => $category->id],
+                                    'message' => trans('messages.confirmDeleteCategory'),
                                 ])
                             </td>
                         </tr>

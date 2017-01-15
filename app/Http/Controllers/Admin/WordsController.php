@@ -74,7 +74,7 @@ class WordsController extends Controller
             DB::commit();
 
             return redirect()
-                ->action('Admin\WordsController@index')
+                ->action('Admin\WordsController@index', ['category_id' => $word->category->id])
                 ->with('status', trans('messages.success', [
                     'Action' => trans('messages.create'),
                     'item' => trans_choice('messages.words', 1),
@@ -106,7 +106,7 @@ class WordsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $word = Word::findOrFail($id);
 
@@ -143,7 +143,7 @@ class WordsController extends Controller
             DB::commit();
 
             return redirect()
-                ->action('Admin\WordsController@index')
+                ->action('Admin\WordsController@index', ['category_id' => $data['category']])
                 ->with('status', trans('messages.success', [
                     'Action' => trans('messages.update'),
                     'item' => trans_choice('messages.words', 1),
@@ -177,7 +177,7 @@ class WordsController extends Controller
             DB::commit();
 
             return redirect()
-                ->action('Admin\WordsController@index')
+                ->action('Admin\WordsController@index', ['category_id' => $word->category->id])
                 ->with('status', trans('messages.success', [
                     'Action' => trans('messages.delete'),
                     'item' => trans_choice('messages.words', 1),
