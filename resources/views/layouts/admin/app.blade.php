@@ -18,7 +18,9 @@
 <body>
     <div id="app">
         @include('layouts.admin.header')
-        @yield('content')
+        <main class="content">
+            @yield('content')
+        </main>
         @include('layouts.footer')
     </div>
 

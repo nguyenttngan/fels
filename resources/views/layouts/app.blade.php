@@ -12,7 +12,6 @@
 
     <!-- Styles -->
     {!! Html::style(elixir('css/app.css')) !!}
-    {{--{!! Html::style(elixir('css/follow.css')) !!}--}}
     {!! Html::style(elixir('css/bootstrap-social.css')) !!}
 
 
@@ -20,7 +19,9 @@
 <body>
     <div id="app">
         @include('layouts.header')
-        @yield('content')
+        <main class="content">
+            @yield('content')
+        </main>
         @include('layouts.footer')
     </div>
 

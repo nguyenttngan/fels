@@ -195,6 +195,8 @@ div#footer div.fRight {
 .header{
     background-color: #1aae88;
     color: black !important;
+    position: fixed;
+    width: 100%;
 }
 
 .navbar-brand, .navbar-left li a, .navbar-right li a {
@@ -218,6 +220,10 @@ ul {
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+.content {
+    padding-top: 100px;
 }
 
 body {
