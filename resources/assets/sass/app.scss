@@ -41,6 +41,7 @@
     width: 240px;
     height: 100%;
     color: #e1ffff;
+    position: fixed ;
 }
 .nav-side-menu .brand {
     background-color: #23282e;
@@ -223,4 +224,9 @@ ul {
 
 .content {
     padding-top: 100px;
+}
+
+body {
+    background-attachment: fixed;
+    padding-bottom: 100px;
 }
